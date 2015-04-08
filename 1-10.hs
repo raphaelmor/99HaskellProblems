@@ -1,3 +1,5 @@
+import Data.List
+
 -- Problem 1
 myLast :: [a] -> a
 myLast (x:[]) = x
@@ -55,3 +57,15 @@ flatten (List xs) = foldr (\x acc -> flatten x ++ acc) [] xs
 flatten' :: NestedList a -> [a]
 flatten' (Elem x) = [x]
 flatten' (List xs) = concatMap flatten xs 
+
+-- Problem 8
+compress :: Eq a => [a] -> [a]
+compress = foldr removeDuplicates [] 
+  where
+    removeDuplicates x [] = [x]
+    removeDuplicates x acc
+      | x == head acc = acc
+      | otherwise = x : acc 
+
+compress' :: Eq a => [a] -> [a]
+compress' = map head . group
