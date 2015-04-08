@@ -49,4 +49,9 @@ isPalindrome xs = (head xs) == (last xs) && (isPalindrome $ init $ tail xs)
 data NestedList a = Elem a | List [NestedList a]
 
 flatten :: NestedList a -> [a]
-flatten (Elem x) = x
+flatten (Elem x) = [x]
+flatten (List xs) = foldr (\x acc -> flatten x ++ acc) [] xs
+
+flatten' :: NestedList a -> [a]
+flatten' (Elem x) = [x]
+flatten' (List xs) = concatMap flatten xs 
