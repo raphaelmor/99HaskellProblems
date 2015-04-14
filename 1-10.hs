@@ -69,3 +69,15 @@ compress = foldr removeDuplicates []
 
 compress' :: Eq a => [a] -> [a]
 compress' = map head . group
+
+-- Problem 9
+pack :: Eq a => [a] -> [[a]]
+pack = group
+
+pack' :: Eq a => [a] -> [[a]]
+pack' [] = []
+pack' list@(x:_) = let (group,rest) = span (==x) list
+				in group : pack' rest 
+-- Problem 10
+encode :: Eq a => [a] -> [(Int,a)]
+encode = map (\xs -> (length xs, head xs)) . pack
