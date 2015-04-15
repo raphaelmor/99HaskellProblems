@@ -81,3 +81,6 @@ pack' list@(x:_) = let (group,rest) = span (==x) list
 -- Problem 10
 encode :: Eq a => [a] -> [(Int,a)]
 encode = map (\xs -> (length xs, head xs)) . pack
+
+encode' :: Eq a => [a] -> [(Int,a)]
+encode' xs = [(length x, head x) | x <- pack xs]
