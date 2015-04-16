@@ -33,3 +33,7 @@ encodeDirect = map helper . encode'
 		helper (1,x) = Single x
 		helper (n,x) = Multiple n x
 
+-- Problem 14
+dupli :: [a] -> [a]
+dupli [] = []
+dupli (x:xs) = x:x:(dupli xs)
