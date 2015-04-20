@@ -37,3 +37,7 @@ encodeDirect = map helper . encode'
 dupli :: [a] -> [a]
 dupli [] = []
 dupli (x:xs) = x:x:(dupli xs)
+
+-- Problem 15
+repli :: [a] -> Int -> [a]
+repli xs count = xs >>= replicate count
