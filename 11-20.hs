@@ -41,3 +41,11 @@ dupli (x:xs) = x:x:(dupli xs)
 -- Problem 15
 repli :: [a] -> Int -> [a]
 repli xs count = xs >>= replicate count
+
+-- Problem 16
+dropEvery :: [a] -> Int -> [a]
+dropEvery xs n = helper xs n 
+	where
+		helper [] _ = []
+		helper (x:xs) 1 = helper xs n
+		helper (x:xs) k = x : helper xs (k-1)
